@@ -15,16 +15,11 @@
 */
 
 class Employee {
-  // Заповніть модифікатори доступу
-  name: string;
-  department: string;
-  salary: number;
-
-  constructor(name: string, department: string, salary: number) {
-    this.name = name;
-    this.department = department;
-    this.salary = salary;
-  }
+  constructor(
+    public name: string,
+    protected salary: number,
+    private department: string
+  ) {}
 
   getEmployeeDetails() {
     return `Name: ${this.name}, Department: ${this.department}, Salary: ${this.salary}`;
@@ -32,8 +27,15 @@ class Employee {
 }
 
 class Manager extends Employee {
-  // Реалізуйте конструктор та збільшіть salary на 10000
+  constructor(name: string, salary: number) {
+    super(name, salary + 10000, "Management");
+  }
 }
 
+const employee = new Employee("Anna", 20000, "IT");
+console.log(employee.getEmployeeDetails());
+
+const manager = new Manager("Max", 20000);
+console.log(manager.getEmployeeDetails());
 
 export {};
