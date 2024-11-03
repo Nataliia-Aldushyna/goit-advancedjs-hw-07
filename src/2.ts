@@ -18,7 +18,7 @@ class Employee {
   constructor(
     public name: string,
     protected salary: number,
-    private department: string
+    private department?: string
   ) {}
 
   getEmployeeDetails() {
